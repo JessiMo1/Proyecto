@@ -1,0 +1,122 @@
+/* Reset y estilos generales */
+body {
+    border: 30px solid #0e1c36;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f4f8;
+}
+
+/* Estilos para los logos */
+.logo {
+    width: 200px;
+    position: absolute;
+    top: 20px;
+}
+
+.logo-izquierda {
+    left: 60px;
+    top: 5px;
+}
+
+.logo-derecha {
+    right: 60px;
+    top: 55px;
+}
+
+/* Estilos de la tarjeta y sus elementos */
+.cardbody-color {
+    background-color: #ebf2fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.btn-color {
+    background-color: #0e1c36;
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-color:hover {
+    background-color: #333;
+}
+
+.profile-image-pic {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+/* Enlace sin subrayado */
+a {
+    text-decoration: none;
+    color: #0e1c36;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    /* Reducir tamaño de logos y ajustar posición en pantallas medianas */
+    .logo {
+        width: 150px;
+    }
+    .logo-izquierda {
+        left: 30px;
+    }
+    .logo-derecha {
+        right: 30px;
+        top: 30px;
+    }
+
+    /* Reducir tamaño de imagen de perfil */
+    .profile-image-pic {
+        height: 150px;
+        width: 150px;
+    }
+
+    /* Ajuste del contenedor y bordes */
+    body {
+        border-width: 15px;
+        padding: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Reducir aún más los logos en pantallas pequeñas */
+    .logo {
+        width: 100px;
+    }
+    .logo-izquierda {
+        left: 20px;
+    }
+    .logo-derecha {
+        right: 20px;
+        top: 20px;
+    }
+
+    /* Reducir tamaño de la imagen de perfil en pantallas pequeñas */
+    .profile-image-pic {
+        height: 100px;
+        width: 100px;
+    }
+
+    /* Ajuste adicional para el borde en pantallas pequeñas */
+    body {
+        border-width: 10px;
+    }
+}
+
