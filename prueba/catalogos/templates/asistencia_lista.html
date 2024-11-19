@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h3>Asistencia</h3>
+
+        <!-- Formulario de búsqueda y filtros -->
+        <form method="get" class="row g-3 mb-4">
+            <!-- Filtro por nombre del profesor -->
+            <div class="col-md-3">
+                <input type="text" name="nombre_profesor" class="form-control" placeholder="Filtrar por nombre de profesor" value="{{ nombre_profesor }}">
+            </div>
+
+            <!-- Filtro por aula -->
+            <div class="col-md-3">
+                <select name="aula" class="form-select">
+                    <option value="">Filtrar por aula</option>
+                    {% for aula in aulas %}
+                        <option value="{{ aula.id }}" {% if aula_id == aula.id|stringformat:"s" %}selected{% endif %}>{{ aula.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Filtro por clase -->
+            <div class="col-md-3">
+                <select name="clase" class="form-select">
+                    <option value="">Filtrar por clase</option>
+                    {% for clase in clases %}
+                        <option value="{{ clase.id }}" {% if clase_id == clase.id|stringformat:"s" %}selected{% endif %}>{{ clase.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Botón de búsqueda -->
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success w-100">Filtrar</button>
+            </div>
+        </form>
+
+        <!-- Tabla de Asistencia -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Estudiante</th>
+                        <th>Profesor</th>
+                        <th>Clase</th>
+                        <th>Aula</th>
+                        <th>Fecha</th>
+                        <th>Asistencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for asistencia in asistencias %}
+                        <tr>
+                            <td>{{ asistencia.estudiante.nombre }}</td>
+                            <td>{{ asistencia.profesor.nombre }}</td>
+                            <td>{{ asistencia.clase.nombre }}</td>
+                            <td>{{ asistencia.profesor.aula.nombre }}</td>  <!-- Aula del profesor -->
+                            <td>{{ asistencia.fecha }}</td>
+                            <td>{% if asistencia.asistencia %}Asistió{% else %}No asistió{% endif %}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="6">No se encontraron resultados.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

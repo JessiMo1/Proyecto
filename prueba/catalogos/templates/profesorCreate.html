@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}
+Inserción de Profesor
+{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <h2 class="my-4 text-center">Crear Nuevo Profesor</h2>
+        
+        <!-- Cuadro de formulario con fondo transparente y más pequeño -->
+        <div class="card shadow-lg" style="max-width: 500px; margin: 0 auto; background-color: rgba(255, 255, 255, 0.8);">
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <!-- Clave -->
+                    <div class="mb-3">
+                        <label for="id_clave" class="form-label">Clave</label>
+                        {{ form.clave }}
+                    </div>
+
+                    <!-- Nombre -->
+                    <div class="mb-3">
+                        <label for="id_nombre" class="form-label">Nombre</label>
+                        {{ form.nombre }}
+                    </div>
+
+                    <!-- Correo Electrónico -->
+                    <div class="mb-3">
+                        <label for="id_correo" class="form-label">Correo Electrónico</label>
+                        {{ form.correo }}
+                    </div>
+
+                    <!-- Huella Dactilar -->
+                    <div class="mb-3">
+                        <label for="id_huella_dactilar" class="form-label">Huella Dactilar</label>
+                        {{ form.huella_dactilar }}
+                    </div>
+
+                    <!-- Departamento -->
+                    <div class="mb-3">
+                        <label for="id_departamento" class="form-label">Departamento</label>
+                        {{ form.departamento }}
+                    </div>
+
+                    <!-- Género -->
+                    <div class="mb-3">
+                        <label for="id_genero" class="form-label">Género</label>
+                        {{ form.genero }}
+                    </div>
+
+                    <!-- Aula -->
+                    <div class="mb-3">
+                        <label for="id_aula" class="form-label">Aula</label>
+                        {{ form.aula }}
+                    </div>
+
+                    <!-- Materia -->
+                    <div class="mb-3">
+                        <label for="id_clase" class="form-label">Materia</label>
+                        {{ form.clase }}
+                    </div>
+
+                    <!-- Botones -->
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <a href="{% url 'profesorRead' %}" class="btn btn-danger">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Fin del cuadro de formulario -->
+    </div>
+{% endblock %}

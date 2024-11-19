@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+Gestión de Administradores
+{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <h2 class="my-4 text-center">Crear Nuevo Usuario</h2>
+        
+        <!-- Cuadro de formulario con fondo transparente y más pequeño -->
+        <div class="card shadow-lg" style="max-width: 500px; margin: 0 auto; background-color: rgba(255, 255, 255, 0.8);">
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <!-- Nombre -->
+                    <div class="mb-3">
+                        <label for="id_nombre" class="form-label">Nombre</label>
+                        {{ form.nombre }}
+                    </div>
+
+                    <!-- Nombre de Usuario -->
+                    <div class="mb-3">
+                        <label for="id_usunom" class="form-label">Nombre del Usuario</label>
+                        {{ form.usunom }}
+                    </div>
+
+                    <!-- Correo Electrónico -->
+                    <div class="mb-3">
+                        <label for="id_email" class="form-label">Correo Electrónico</label>
+                        {{ form.email }}
+                    </div>
+
+                    <!-- Contraseña -->
+                    <div class="mb-3">
+                        <label for="id_password" class="form-label">Contraseña</label>
+                        {{ form.contraseña }}
+                    </div>
+
+
+                    <!-- Género -->
+                    <div class="mb-3">
+                        <label for="id_genero" class="form-label">Género</label>
+                        {{ form.genero }}
+                    </div>
+
+                    <!-- Botones -->
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <a href="{% url 'gestionARead' %}" class="btn btn-danger">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Fin del cuadro de formulario -->
+    </div>
+
+{% endblock %}

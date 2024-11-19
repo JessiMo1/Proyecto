@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h3>Listado de Clases:</h3>
+
+    <!-- Botón para nuevo registro -->
+    <a href="{% url 'claseCreate' %}" class="btn btn-primary mb-3">Nuevo Registro</a>
+
+    <!-- Formulario de búsqueda y filtros -->
+    <form method="get" class="row g-3 mb-4">
+        <div class="col-md-4">
+            <input 
+                type="text" 
+                name="q" 
+                class="form-control" 
+                placeholder="Buscar por nombre de la clase" 
+                value="{{ query }}">
+        </div>
+
+        <div class="col-md-3">
+            <select name="aula" class="form-select">
+                <option value="">Filtrar por aula</option>
+                {% for aula in aulas %}
+                    <option value="{{ aula.id }}" {% if aula_id == aula.id|stringformat:"s" %}selected{% endif %}>
+                        {{ aula.nombre }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <select name="profesor" class="form-select">
+                <option value="">Filtrar por profesor</option>
+                {% for profesor in profesores %}
+                    <option value="{{ profesor.id }}" {% if profesor_id == profesor.id|stringformat:"s" %}selected{% endif %}>
+                        {{ profesor.nombre }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-success w-100">Filtrar</button>
+        </div>
+    </form>
+
+    <!-- Tabla de clases -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre de la Clase</th>
+                    <th>Aula</th>
+                    <th>Profesor(es)</th> <!-- Ajuste en el encabezado para mostrar varios profesores -->
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in clases %}
+                    <tr>
+                        <td>{{ item.nombre }}</td>
+                        <td>{{ item.aula.nombre }}</td>
+                        <td>
+                            <!-- Iterar sobre los profesores de la clase -->
+                            {% for profesor in item.prof.all %}
+                                <p>{{ profesor.nombre }}</p> <!-- Mostrar el nombre de cada profesor -->
+                            {% empty %}
+                                <p>No asignado</p> <!-- Si no hay profesores asignados -->
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-secondary btn-sm">Editar</a>
+                            <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6">No se encontraron resultados.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Mostrar el número total de clases -->
+    <div class="mt-3">
+        <strong>Número total de clases: {{ clases|length }}</strong>
+    </div>
+</div>
+{% endblock %}

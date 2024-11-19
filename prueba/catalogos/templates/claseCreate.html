@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+Inserción de Clase
+{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <h2 class="my-4 text-center">Crear Nueva Clase</h2>
+        
+        <!-- Cuadro de formulario con fondo transparente y más pequeño -->
+        <div class="card shadow-lg" style="max-width: 500px; margin: 0 auto; background-color: rgba(255, 255, 255, 0.8);">
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <!-- Nombre de la Clase -->
+                    <div class="mb-3">
+                        <label for="id_nombre" class="form-label">Nombre de la Clase</label>
+                        {{ form.nombre }}
+                    </div>
+
+                    <!-- Aula -->
+                    <div class="mb-3">
+                        <label for="id_aula" class="form-label">Aula</label>
+                        {{ form.aula }}
+                    </div>
+
+                    <!-- Profesores -->
+                    <div class="mb-3">
+                        <label for="id_prof" class="form-label">Profesor(es)</label>
+                        {{ form.prof }}
+                    </div>
+
+                    <!-- Fecha y Hora -->
+                    <div class="mb-3">
+                        <label for="id_fechahora" class="form-label">Fecha y Hora</label>
+                        {{ form.fechahora }}
+                    </div>
+
+                    <!-- Botones -->
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <a href="{% url 'claseRead' %}" class="btn btn-danger">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Fin del cuadro de formulario -->
+    </div>
+
+{% endblock %}

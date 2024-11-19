@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}
+Inserción de Estudiante
+{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <h2 class="my-4 text-center">Crear Nuevo Estudiante</h2>
+        
+        <!-- Cuadro de formulario con fondo transparente y más pequeño -->
+        <div class="card shadow-lg" style="max-width: 500px; margin: 0 auto; background-color: rgba(255, 255, 255, 0.8);">
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <!-- No. Control -->
+                    <div class="mb-3">
+                        <label for="id_no_control" class="form-label">No. Control</label>
+                        {{ form.no_control }}
+                    </div>
+
+                    <!-- Nombre -->
+                    <div class="mb-3">
+                        <label for="id_nombre" class="form-label">Nombre</label>
+                        {{ form.nombre }}
+                    </div>
+
+                    <!-- Correo Electrónico -->
+                    <div class="mb-3">
+                        <label for="id_correo" class="form-label">Correo Electrónico</label>
+                        {{ form.correo }}
+                    </div>
+
+                    <!-- Credencial -->
+                    <div class="mb-3">
+                        <label for="id_credencial" class="form-label">Número de Credencial</label>
+                        {{ form.credencial }}
+                    </div>
+
+                    <!-- Género -->
+                    <div class="mb-3">
+                        <label for="id_genero" class="form-label">Género</label>
+                        {{ form.genero }}
+                    </div>
+
+                    <!-- Semestre -->
+                    <div class="mb-3">
+                        <label for="id_semestre" class="form-label">Semestre</label>
+                        {{ form.semestre }}
+                    </div>
+
+                    <!-- Materia -->
+                    <div class="mb-3">
+                        <label for="id_materia" class="form-label">Materia</label>
+                        {{ form.materia }}
+                    </div>
+
+                    <!-- Botones -->
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <a href="{% url 'estudianteRead' %}" class="btn btn-danger">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Fin del cuadro de formulario -->
+    </div>
+
+{% endblock %}

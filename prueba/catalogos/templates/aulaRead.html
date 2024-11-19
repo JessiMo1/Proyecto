@@ -1,0 +1,44 @@
+{# Extiende de la plantilla base "baseindex.html" para reutilizar su estructura #}
+{% extends "base.html" %}
+
+{# Define un bloque llamado "content" que será insertado en la sección correspondiente de la plantilla base #}
+{% block content %} 
+<div class="container mt-4">
+<h3> Listado de Aulas: </h3>
+<a href="{% url 'aulaCreate'%}" class="btn btn-primary mb-3">Nueva Aula</a>
+
+{% if aulas %}
+
+<div class="table-responsive"></div>
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Capacidad</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+            <tbody>
+                {# Iteración sobre la lista de aulas para mostrar cada aula #}
+                {% for item in aulas %}
+                    <tr>
+                        <td>{{ item.nombre }}</td>
+                        <td>{{ item.capacidad }}</td>
+                    <td>
+                        <a href="#" class="btn btn-secondary btn-sm" > Editar</a>
+                        <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                    </tr>
+
+                    {# Fin de la iteración#}
+                    {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <h1 style="color:darkred;">No hay registros en la Base de Datos</h1>
+    {% endif %}
+    </div>
+</div>
+
+{# Cierre del bloque de contenido #}
+{% endblock %}

@@ -118,5 +118,38 @@ a:hover {
     body {
         border-width: 10px;
     }
+    
+}
+
+.input-group {
+    position: relative;
+}
+
+.field-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: rgba(0, 0, 0, 0.3);
+}
+/* Estilos para los filtros */
+.form-select {
+    background-color: #f8f9fa; /* Fondo claro */
+    border: 1px solid transparent; /* Borde transparente */
+    border-radius: 0.375rem; /* Bordes redondeados */
+    padding: 0.375rem 0.75rem; /* Espaciado interno moderado */
+}
+
+/* Estilo cuando el campo tiene el foco */
+.form-select:focus {
+    outline: none; /* Elimina el borde de enfoque predeterminado */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Sombra azul cuando está en foco */
+}
+
+/* Opcional: Puedes ajustar el tamaño de los campos */
+.form-select.form-select-lg {
+    font-size: 1rem; /* Tamaño de fuente estándar */
 }
 
