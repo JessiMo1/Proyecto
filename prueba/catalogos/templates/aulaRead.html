@@ -5,7 +5,6 @@
 {% block content %} 
 <div class="container mt-4">
 <h3> Listado de Aulas: </h3>
-<a href="{% url 'aulaCreate'%}" class="btn btn-primary mb-3">Nueva Aula</a>
 
 {% if aulas %}
 
@@ -37,6 +36,11 @@
         {% else %}
         <h1 style="color:darkred;">No hay registros en la Base de Datos</h1>
     {% endif %}
+    <div class="d-flex justify-content-start mt-3">
+        <a href="{% url 'aulaCreate'%}" class="btn btn-primary mb-3">Nueva Aula</a>
+
+    </div>
+
     </div>
 </div>
 

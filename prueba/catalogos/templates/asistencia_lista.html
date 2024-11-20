@@ -42,7 +42,6 @@
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>Estudiante</th>
                         <th>Profesor</th>
                         <th>Clase</th>
                         <th>Aula</th>
@@ -53,7 +52,6 @@
                 <tbody>
                     {% for asistencia in asistencias %}
                         <tr>
-                            <td>{{ asistencia.estudiante.nombre }}</td>
                             <td>{{ asistencia.profesor.nombre }}</td>
                             <td>{{ asistencia.clase.nombre }}</td>
                             <td>{{ asistencia.profesor.aula.nombre }}</td>  <!-- Aula del profesor -->
@@ -67,6 +65,15 @@
                     {% endfor %}
                 </tbody>
             </table>
+        </div>
+
+        <!-- Botón de descarga -->
+        <div class="d-flex justify-content-end mt-3">
+            <form method="get" action="{% url 'reporte_pdf' %}" class="d-flex">
+                <input type="date" name="fecha_inicio" class="form-control me-2" placeholder="Fecha inicio">
+                <input type="date" name="fecha_fin" class="form-control me-2" placeholder="Fecha fin">
+                <button type="submit" class="btn btn-danger">Descargar PDF</button>
+            </form>
         </div>
     </div>
 {% endblock %}

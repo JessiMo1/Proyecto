@@ -4,9 +4,6 @@
 <div class="container mt-4">
     <h3>Listado de Profesores:</h3>
 
-    <!-- Botón para nuevo registro -->
-    <a href="{% url 'profesorCreate' %}" class="btn btn-primary mb-3">Nuevo Registro</a>
-
     <!-- Formulario de búsqueda y filtros -->
     <form method="get" class="row g-3 mb-4">
         <div class="col-md-4">
@@ -65,8 +62,14 @@
                         <td>{{ item.clave }}</td>
                         <td>{{ item.nombre }}</td>
                         <td>{{ item.correo }}</td>
-                        <td>{{ item.aula.nombre }}</td>  <!-- Ajusta según cómo accedas a la información del aula -->
-                        <td>{{ item.clase.nombre }}</td>
+                        <td>{{ item.aula.nombre }}</td> 
+                        <td> <!-- Ajusta según cómo accedas a la información del aula -->
+                        {% for clase in item.clase.all %}
+                        <p>{{ clase.nombre }}</p> <!-- Mostrar el nombre de cada profesor -->
+                    {% empty %}
+                        <p>No asignado</p> <!-- Si no hay profesores asignados -->
+                    {% endfor %}
+                        </td>
                         <td>{{ item.genero }}</td>
                           <!-- Ajusta según cómo accedas a la información de la materia -->
                         <td>
@@ -81,6 +84,11 @@
                 {% endfor %}
             </tbody>
         </table>
+    </div>
+    
+    <div class="d-flex justify-content-start mt-3">
+  <!-- Botón para nuevo registro -->
+        <a href="{% url 'profesorCreate' %}" class="btn btn-primary mb-3">Nuevo Registro</a>
     </div>
 </div>
 {% endblock %}

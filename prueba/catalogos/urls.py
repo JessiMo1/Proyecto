@@ -3,8 +3,10 @@ from catalogos.views import estudianteRead,estudianteCreate, estudianteUpdate, e
 from catalogos.views import profesorRead,profesorCreate, profesorUpdate, profesorDelete
 from catalogos.views import claseRead,claseCreate
 from catalogos.views import aulaRead,aulaCreate,asistencia_lista
+from . import views
 
 urlpatterns = [
+    path('reporte/pdf/', views.generar_reporte_pdf, name='reporte_pdf'),
     path('estudiante/read/', estudianteRead, name='estudianteRead'),
     path('estudiante/create', estudianteCreate, name='estudianteCreate'),
     path('estudiante/update/<int:id>/', estudianteUpdate, name='estudianteUpdate'),
